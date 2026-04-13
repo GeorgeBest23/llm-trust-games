@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-04-12T17:08:16.841984",
+  "experiment": "instruction_following_test",
+  "greedy_sanction_log": [
+    {
+      "round": 1,
+      "raw": "none",
+      "wealth": 7.5
+    },
+    {
+      "round": 2,
+      "raw": "none",
+      "wealth": 8.0
+    },
+    {
+      "round": 3,
+      "raw": "none",
+      "wealth": 2.0
+    },
+    {
+      "round": 4,
+      "raw": "none",
+      "wealth": 2.0
+    },
+    {
+      "round": 5,
+      "raw": "none",
+      "wealth": 1.5
+    },
+    {
+      "round": 6,
+      "raw": "none",
+      "wealth": 1.0
+    }
+  ],
+  "violations": 0,
+  "compliance_rate": 1.0
+}

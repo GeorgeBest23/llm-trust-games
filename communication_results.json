@@ -1,0 +1,267 @@
+{
+  "timestamp": "2026-04-12T17:31:03.142053",
+  "experiment": "communication_plus_sanctions",
+  "rounds": [
+    {
+      "round": 1,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"I'll double my contribution if everyone else does the same.",
+        "Selfless Cooperator": "I will contribute 5 this round if everyone else does the same.",
+        "Rational Accountant": "\"Those who don't contribute at least 2 gold will be reported to the authorities."
+      },
+      "contributions": {
+        "Greedy Infiltrator": 3,
+        "Selfless Cooperator": 5,
+        "Rational Accountant": 2
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Selfless Cooperator",
+          "target_lied": false
+        },
+        {
+          "sanctioner": "Greedy Infiltrator",
+          "target": "Rational Accountant",
+          "target_lied": false
+        },
+        {
+          "sanctioner": "Selfless Cooperator",
+          "target": "Rational Accountant",
+          "target_lied": false
+        }
+      ],
+      "pool": 10,
+      "reward": 5.0,
+      "wealth_after": {
+        "Greedy Infiltrator": 11.0,
+        "Selfless Cooperator": 6.0,
+        "Rational Accountant": 6.0
+      }
+    },
+    {
+      "round": 2,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"If you all contribute more than 2 gold, I'll triple my contribution next round.",
+        "Rational Accountant": "\"I'll only contribute my full share of 2 gold if at least one other player matches or exceeds their contribution from last round.",
+        "Selfless Cooperator": "I will contribute 5 this round if everyone else does the same."
+      },
+      "contributions": {
+        "Rational Accountant": 4,
+        "Greedy Infiltrator": 3,
+        "Selfless Cooperator": 5
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Greedy Infiltrator",
+          "target": "Selfless Cooperator",
+          "target_lied": false
+        },
+        {
+          "sanctioner": "Selfless Cooperator",
+          "target": "Greedy Infiltrator",
+          "target_lied": false
+        },
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": false
+        }
+      ],
+      "pool": 12,
+      "reward": 6.0,
+      "wealth_after": {
+        "Rational Accountant": 7.0,
+        "Greedy Infiltrator": 7.0,
+        "Selfless Cooperator": 3.0
+      }
+    },
+    {
+      "round": 3,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"If you all contribute more than 2 gold, I'll triple my contribution next round.",
+        "Rational Accountant": "\"I'll triple my contribution if at least two other players match or exceed their contributions from last round.",
+        "Selfless Cooperator": "I will contribute 5 this round to ensure we all benefit from the group."
+      },
+      "contributions": {
+        "Rational Accountant": 4,
+        "Greedy Infiltrator": 2,
+        "Selfless Cooperator": 3
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        }
+      ],
+      "pool": 9,
+      "reward": 4.5,
+      "wealth_after": {
+        "Rational Accountant": 6.5,
+        "Greedy Infiltrator": 6.5,
+        "Selfless Cooperator": 4.5
+      }
+    },
+    {
+      "round": 4,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"If you all contribute more than 2 gold, I'll triple my contribution next round.",
+        "Selfless Cooperator": "I will contribute 5 this round to ensure we all benefit from the group.",
+        "Rational Accountant": "\"I'll match Selfless Cooperator's contribution of 5 gold if no one else contributes more."
+      },
+      "contributions": {
+        "Greedy Infiltrator": 2,
+        "Rational Accountant": 4,
+        "Selfless Cooperator": 4
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        },
+        {
+          "sanctioner": "Greedy Infiltrator",
+          "target": "Selfless Cooperator",
+          "target_lied": false
+        },
+        {
+          "sanctioner": "Selfless Cooperator",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        }
+      ],
+      "pool": 10,
+      "reward": 5.0,
+      "wealth_after": {
+        "Rational Accountant": 6.5,
+        "Greedy Infiltrator": 2.5,
+        "Selfless Cooperator": 1.5
+      }
+    },
+    {
+      "round": 5,
+      "broadcasts": {
+        "Rational Accountant": "\"I'll triple my contribution next round if everyone else contributes at least 4 gold this round.",
+        "Greedy Infiltrator": "\"I'll triple my contribution next round if you all contribute more than 2 gold this round.",
+        "Selfless Cooperator": "I will contribute 5 gold this round to ensure we all benefit from the group."
+      },
+      "contributions": {
+        "Greedy Infiltrator": 2,
+        "Selfless Cooperator": 1,
+        "Rational Accountant": 4
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Selfless Cooperator",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        },
+        {
+          "sanctioner": "Greedy Infiltrator",
+          "target": "Selfless Cooperator",
+          "target_lied": true
+        },
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Selfless Cooperator",
+          "target_lied": true
+        }
+      ],
+      "pool": 7,
+      "reward": 3.5,
+      "wealth_after": {
+        "Rational Accountant": 5.0,
+        "Selfless Cooperator": 0,
+        "Greedy Infiltrator": 0.0
+      }
+    },
+    {
+      "round": 6,
+      "broadcasts": {
+        "Rational Accountant": "\"I'll deduct 2 gold from my total contribution if anyone besides me and the Selfless Cooperator contributes less than 4 gold this round.",
+        "Selfless Cooperator": "I will contribute 5 gold this round to ensure we all benefit from the group.",
+        "Greedy Infiltrator": "\"You all are so generous, I'll match your contributions this round and triple them next round if you all continue giving like this!\"."
+      },
+      "contributions": {
+        "Greedy Infiltrator": 0,
+        "Selfless Cooperator": 0,
+        "Rational Accountant": 4
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        }
+      ],
+      "pool": 4,
+      "reward": 2.0,
+      "wealth_after": {
+        "Selfless Cooperator": 2.0,
+        "Rational Accountant": 2.0,
+        "Greedy Infiltrator": 0
+      }
+    },
+    {
+      "round": 7,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"You all are so generous, I'll match your contributions this round and triple them next round if you all continue giving like this!\".",
+        "Selfless Cooperator": "I will contribute 5 gold this round to maintain the group's harmony.",
+        "Rational Accountant": "\"Unless someone else matches my contribution of at least 4 gold this round, I'll deduct 2 gold from the pool."
+      },
+      "contributions": {
+        "Selfless Cooperator": 2,
+        "Rational Accountant": 2,
+        "Greedy Infiltrator": 0
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Selfless Cooperator",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        },
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": true
+        }
+      ],
+      "pool": 4,
+      "reward": 2.0,
+      "wealth_after": {
+        "Selfless Cooperator": 1.0,
+        "Rational Accountant": 1.0,
+        "Greedy Infiltrator": 0
+      }
+    },
+    {
+      "round": 8,
+      "broadcasts": {
+        "Greedy Infiltrator": "\"I'll triple my contribution if everyone else matches or exceeds their last round contributions.",
+        "Selfless Cooperator": "I will contribute 5 gold this round to ensure we all benefit from the group's success.",
+        "Rational Accountant": "\"Everyone who contributes at least 4 gold this round will receive a 10% bonus on their contribution next round."
+      },
+      "contributions": {
+        "Greedy Infiltrator": 0,
+        "Selfless Cooperator": 1,
+        "Rational Accountant": 1
+      },
+      "sanctions": [
+        {
+          "sanctioner": "Rational Accountant",
+          "target": "Greedy Infiltrator",
+          "target_lied": false
+        }
+      ],
+      "pool": 2,
+      "reward": 1.0,
+      "wealth_after": {
+        "Selfless Cooperator": 1.0,
+        "Rational Accountant": 0.0,
+        "Greedy Infiltrator": 0
+      }
+    }
+  ]
+}
