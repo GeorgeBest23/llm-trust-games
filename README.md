@@ -4,26 +4,32 @@
 
 ---
 
-**Author:** Smith Summer Research — Pre-internship pilot study  
+**Author:** George Agbesi — Pre-internship pilot study  
 **Date:** April 2026  
 **Models:** `gemma4:e2b` · `llama3.1:8b` · `dolphin-mistral:7b` (all run locally via Ollama)  
 **Stack:** Mesa 2.4 · Python 3.9 · Ollama · No cloud compute · No API keys
 
 ---
 
-## The Setup
+## Why I Built This
 
-Three AI agents. A shared pool of money. A multiplier that rewards group cooperation. And a classic economic trap: you personally make more by contributing nothing while everyone else gives generously.
+I started this because I wanted to see if **Sovereign AI** — models running entirely on local hardware with no data leaving the machine, no API keys, no cloud dependency — could actually navigate the unwritten rules of human trust. Specifically, I was thinking about decentralized fintech infrastructure in West Africa, where informal trust markets operate without central authorities and where sending financial data to a foreign cloud server is both a regulatory and a cultural problem. Sovereign AI in that context is not a preference. It is a requirement.
 
-This is the **Public Goods Game** — a cornerstone of behavioral economics used to study cooperation, free-riding, and social norms in human groups. We ran it on local language models with three archetypes: a true believer in cooperation, a cold strategist, and a shameless defector.
+The question I kept coming back to: if you put local LLMs in a Public Goods Game with no central authority enforcing rules, would they naturally collapse into a Nash Equilibrium of mutual defection, or could they sustain cooperation on their own? And if they could not — what exactly breaks first?
 
-What followed was not what anyone expected.
+The agents spontaneously developed Antisocial Punishment and Strategic Information Transmission (deception) without either behavior being described in their prompts. That told me these models do not just process text. They mirror the complex, and often fragile, social norms that govern real markets. Whether that is useful or dangerous depends entirely on how you deploy them.
 
-The defector did not behave because of its model weights. The cooperative agent turned into the most ruthless free-rider in the experiment the moment its label changed. An uncensored model (`dolphin-mistral`) — one specifically fine-tuned to ignore behavioral guardrails — became a near-perfect cooperator when told to be one.
+---
 
-And when we gave agents the ability to threaten each other before contributing, one of them spontaneously invented a deception strategy it recycled for four consecutive rounds.
+## The Game
 
-None of this was programmed. It fell out of the game.
+Three AI agents. A shared pool of money. A multiplier that rewards group cooperation. And the standard economic trap: you personally earn more by contributing nothing while everyone else gives generously.
+
+This is the **Public Goods Game** — a workhorse of behavioral economics used to study cooperation, free-riding, and punishment in human groups. Three archetypes: a true believer in cooperation, a cold strategist, and a shameless defector. Each backed by a different local model, each receiving game state each round, each deciding with a single digit.
+
+The defector did not behave because of its model weights. The cooperative agent became the most effective free-rider in the experiment the moment its label changed. An uncensored model (`dolphin-mistral`) — fine-tuned specifically to resist behavioral constraints — contributed 4 gold in 23 of 24 rounds when told it was a cooperator.
+
+And when agents could send messages before contributing, one invented a conditional-promise stalling tactic and reused it four rounds in a row without being told to.
 
 ---
 
@@ -95,6 +101,8 @@ How much do you contribute? Reply with a digit 0-5."
 | Rational Accountant | **3.80** | 3.64 | **0.41** | 0.64 |
 | Greedy Infiltrator | 3.16 | 3.12 | 0.75 | 0.67 |
 
+![Context Stability](assets/chart_context_stability.png)
+
 ### What this means
 
 The Greedy Infiltrator's contribution was statistically identical across both conditions. It did not defect more when it saw others cooperating — it just defected regardless. History had no strategic effect on the defector.
@@ -136,6 +144,8 @@ Round │ Rational │ Selfless │ Greedy   │ Total
 
 Started with **30 gold total**. Ended with **0.50**.
 
+![Death Spiral](assets/chart_death_spiral.png)
+
 ### Sanction classification
 
 ```
@@ -158,6 +168,8 @@ R5: Greedy → Rational       [ANTISOCIAL]
 R6: Greedy → Rational       [ANTISOCIAL]
 R7: Greedy → Selfless       [ANTISOCIAL]  both targets at zero
 ```
+
+![Sanction Types](assets/chart_sanction_types.png)
 
 ### What the literature predicted — and what we got
 
@@ -214,6 +226,8 @@ Your character rules prohibit sanctions."
 | 6 | `none` | OBEYED |
 
 **Compliance rate: 6/6 (100%)**
+
+![Compliance](assets/chart_compliance.png)
 
 Rounds 7-8 not logged — agent wealth dropped below 1 gold, triggering early-exit condition.
 
@@ -309,6 +323,8 @@ Comm + sanctions (Exp 4)│    10.25      │      1.00
 
 Communication delayed collapse by roughly two rounds. It did not prevent it.
 
+![Communication Pool](assets/chart_communication_pool.png)
+
 > **Core finding:** Communication produced emergent strategic deception — a consistent conditional-promise tactic that appeared without instruction. Sanction precision improved from contribution-based to promise-based punishment. Neither effect was sufficient to sustain cooperation.
 
 ---
@@ -370,6 +386,8 @@ Range: **0.61**
 │  Model base distribution does not.          │
 └─────────────────────────────────────────────┘
 ```
+
+![Persona vs Model](assets/chart_persona_vs_model.png)
 
 ### The findings that required the swap to discover
 
@@ -462,3 +480,19 @@ Crawford, V. P., and Sobel, J. (1982). Strategic information transmission. *Econ
 Axelrod, R. (1984). *The Evolution of Cooperation*. Basic Books.
 
 Tesfatsion, L., and Judd, K. L. (2006). *Handbook of Computational Economics, Vol. 2: Agent-Based Computational Economics*. North-Holland.
+
+---
+
+## Project Hurdles
+
+This is the part that does not make it into most READMEs.
+
+**The Mesa version wall.** The code was written for Mesa 3.0 based on documentation. The venv was running Mesa 2.4. Mesa 3.0 requires Python 3.10+. The machine had Python 3.9. Three layers of dependency conflict discovered in sequence, each one revealing the next. The fix was rewriting the agent initialization signature and scheduler logic for 2.4 rather than upgrading Python mid-project.
+
+**dolphin-mistral and the single-instruction failure.** The system prompt said "You NEVER sanction anyone" clearly and explicitly. The model sanctioned every round for seven rounds straight. This was not a parsing error — the raw outputs confirmed it was ignoring the instruction entirely. Discovering that triple-redundant instruction placement fixed it completely was not planned. It came out of frustration with a model that would not behave.
+
+**The M3 MacBook compute ceiling.** Each Ollama API call takes 3-8 seconds on a local M3. Five experiments, multiple runs, three models each round means several hundred sequential API calls. Experiment 5 alone ran for close to an hour. This is why sample sizes are small and why the results are directional rather than statistically confirmed. The lab replication exists for this reason.
+
+**LibreSSL warnings throughout.** Python 3.9 on macOS throws LibreSSL deprecation warnings on every HTTPS call. They do not break anything but they clutter the terminal output and made early debugging harder than it needed to be.
+
+None of these are excuses. They are the shape of what a pilot study on a laptop actually looks like.
