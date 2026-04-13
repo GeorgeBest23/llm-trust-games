@@ -1,6 +1,6 @@
-# When AIs Play God with a Shared Wallet
+# Identity is Destiny: Why Your AI Agent's Persona Matters More Than Its Code
 
-### Five experiments. Three local LLMs. One question: do AI agents follow rules, or just pretend to?
+### Five behavioral experiments with local LLMs, Mesa ABM, and zero cloud dependency
 
 ---
 
